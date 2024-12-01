@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-color: theme(colors.surface.50);
+  color: theme(colors.surface.900);
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@layer base {
+  body {
+    @apply antialiased;
+  }
+}
+
+@layer components {
+  .premium-card {
+    @apply bg-white rounded-2xl shadow-premium border border-surface-200/50 backdrop-blur-sm;
+  }
+
+  .premium-input {
+    @apply w-full px-4 py-2.5 rounded-xl border border-surface-200 
+    bg-white/80 backdrop-blur-sm
+    focus:border-primary-600 focus:ring-2 focus:ring-primary-100 outline-none
+    placeholder:text-surface-400;
+  }
+
+  .premium-button {
+    @apply inline-flex items-center justify-center rounded-xl font-medium
+    transition-all duration-200 disabled:opacity-50;
+  }
+
+  .premium-icon-button {
+    @apply p-2.5 rounded-xl hover:bg-surface-100 text-surface-600 
+    hover:text-surface-900 transition-colors disabled:opacity-50;
+  }
+}
