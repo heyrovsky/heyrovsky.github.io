@@ -1,4 +1,4 @@
-import type { NewsItem } from '../types';
+import type { NewsItem } from '../types/index';
 import { articleStore } from '../stores/articleStore';
 import { format, subDays, startOfToday } from 'date-fns';
 import { API_CONFIG, DATE_FORMATS } from '../constants';
@@ -19,8 +19,10 @@ export class DataService {
 
   private formatDate(date: Date): string {
     const month = format(date, 'MMMM-yyyy');
-    const day = format(date, 'dd-MM-yyyy');
-    return `${month}/${day}.json`;
+    const day = date.getDate(); // Get day without leading zero
+    const monthNum = date.getMonth() + 1; // Get month number (1-12)
+    const year = date.getFullYear();
+    return `${month}/${day}-${monthNum}-${year}.json`;
   }
 
   async fetchArticles(date: Date = startOfToday()): Promise<void> {
